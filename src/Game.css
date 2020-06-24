@@ -1,0 +1,52 @@
+
+body {
+    /* background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png)  */
+    background-image: url(https://cdn.pixabay.com/photo/2017/03/01/19/20/seamless-2109393_1280.jpg);
+  }
+    
+  .box {
+    display: inline-block;       
+    border: 1px solid rgb(240, 218, 218);
+    width: 15px;
+    height: 15px;
+    margin-left: -1px;
+    margin-bottom: -1px;
+    }
+  
+  .off {
+    background-color: black;
+  }
+  
+  .on {
+    background-color: rgba(223, 45, 45);
+  }
+    
+  .box:hover { 
+    background: #00CCFF;
+  }
+  
+  .center {
+    margin: auto;
+    display: table;
+    margin-top: 10px;
+  }
+  
+  .grid {
+    width: 150px;
+    line-height: 0;
+    margin: auto;
+    box-shadow: 0px 0px 20px lightcoral;
+    margin-top: 20px;
+  }
+    
+  h1, h2, h3, h4 {
+    color: white;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    margin-top: 10px;
+  }
+  
+  h4 {
+    margin-top: 0px;
+  }

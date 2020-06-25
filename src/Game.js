@@ -9,7 +9,7 @@ class Game extends React.Component {
     constructor(){
         super();
         this.speed = 100;
-        this.rows = 30;
+        this.rows = 35;
         this.cols = 50;
         this.state = {
             generation: 0,
@@ -41,9 +41,10 @@ class Game extends React.Component {
             }
         }
         this.setState({
-            gridFull: gridCopy
+            gridFull: gridCopy,
+            generation: 0
         });
-        this.state.generation = 0;
+        clearInterval(this.intervalId)
     }
 
     playButton = () => {
@@ -54,6 +55,13 @@ class Game extends React.Component {
     pauseButton = () => {
         clearInterval(this.intervalId);
     }
+
+    // Work on a step function later
+    // step = () => {
+    //     clearInterval(this.intervalId)
+    //     this.intervalId = setInterval(this.play, this.speed);
+    //     clearInterval(this.intervalId)
+    // }
 
     slow = () => {
         this.speed = 400;
@@ -70,7 +78,33 @@ class Game extends React.Component {
         this.setState({
             gridFull: grid,
             generation: 0
-        })
+        });
+        clearInterval(this.intervalId)
+    }
+
+    gridSize = (size) => {
+        switch (size){
+            case "1":
+                this.cols = 40;
+                this.rows = 25;
+                break;
+            case "2":
+                this.cols = 50;
+                this.rows = 35;
+                break;
+            case "3":
+                this.cols = 60;
+                this.rows = 45;
+                break;
+            case "4":
+                this.cols = 70;
+                this.rows = 50;
+                break;
+            default:
+                this.cols = 75;
+                this.rows = 50;
+        }
+        this.clear();
     }
 
     play = () => {

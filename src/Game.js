@@ -9,7 +9,7 @@ class Game extends React.Component {
     constructor(){
         super();
         this.speed = 100;
-        this.rows = 30;
+        this.rows = 35;
         this.cols = 50;
         this.state = {
             generation: 0,
@@ -30,14 +30,21 @@ class Game extends React.Component {
         let gridCopy = arrayClone(this.state.gridFull);
         for (let i = 0; i < this.rows; i++){
             for (let j = 0; j < this.cols; j++){
-                if ( Math.floor(Math.random() * 3) === 1){
-                    gridCopy[i][j] = true;
+                if (!gridCopy[i][j]){
+                    if ( Math.floor(Math.random() * 3) === 1){
+                        gridCopy[i][j] = true;
+                    }
+                }
+                else {
+                    gridCopy[i][j] = false;
                 }
             }
         }
         this.setState({
-            gridFull: gridCopy
+            gridFull: gridCopy,
+            generation: 0
         });
+        clearInterval(this.intervalId)
     }
 
     playButton = () => {
@@ -47,6 +54,57 @@ class Game extends React.Component {
 
     pauseButton = () => {
         clearInterval(this.intervalId);
+    }
+
+    // Work on a step function later
+    // step = () => {
+    //     clearInterval(this.intervalId)
+    //     this.intervalId = setInterval(this.play, this.speed);
+    //     clearInterval(this.intervalId)
+    // }
+
+    slow = () => {
+        this.speed = 400;
+        this.playButton();
+    }
+
+    fast = () => {
+        this.speed = 100;
+        this.playButton();
+    }
+
+    clear = () => {
+        let grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+        this.setState({
+            gridFull: grid,
+            generation: 0
+        });
+        clearInterval(this.intervalId)
+    }
+
+    gridSize = (size) => {
+        switch (size){
+            case "1":
+                this.cols = 40;
+                this.rows = 25;
+                break;
+            case "2":
+                this.cols = 50;
+                this.rows = 35;
+                break;
+            case "3":
+                this.cols = 60;
+                this.rows = 45;
+                break;
+            case "4":
+                this.cols = 70;
+                this.rows = 50;
+                break;
+            default:
+                this.cols = 75;
+                this.rows = 50;
+        }
+        this.clear();
     }
 
     play = () => {

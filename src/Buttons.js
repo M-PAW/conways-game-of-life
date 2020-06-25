@@ -1,6 +1,7 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import { ButtonToolbar, MenuItem, DropdownButton, Dropdown } from 'react-bootstrap';
+// import Button from '@material-ui/core/Button';
+import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
+import './Buttons.css';
 
 class Buttons extends React.Component{
 
@@ -19,6 +20,10 @@ class Buttons extends React.Component{
                     <button className="btn btn-default" onClick={this.props.pauseButton}>
                         Pause
                     </button>
+                    
+                    {/* <button className="btn btn-default" onClick={this.props.step}>
+                        Step+1
+                    </button> */}
                     <button className="btn btn-default" onClick={this.props.slow}>
                         Slow
                     </button>
@@ -33,14 +38,15 @@ class Buttons extends React.Component{
                     </button>
                     <DropdownButton
                         title="Grid Size"
-                        id="size-menu"
+                        // id="size-menu"
+                        id="dropdown-basic-button"
                         onSelect={this.handleSelect}
                     >
                         
-                        <Dropdown.Item eventKey="1">25x25</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">35x35</Dropdown.Item>
-                        <Dropdown.Item eventKey="3">50x50</Dropdown.Item>
-                        <Dropdown.Item eventKey="4">75x75</Dropdown.Item>
+                        <Dropdown.Item eventKey="1" className="sizeButton"> [ 40x25 ] </Dropdown.Item>
+                        <Dropdown.Item eventKey="2" className="sizeButton"> [ 50x35 ] </Dropdown.Item>
+                        <Dropdown.Item eventKey="3" className="sizeButton"> [ 60x45 ] </Dropdown.Item>
+                        <Dropdown.Item eventKey="4" className="sizeButton"> [ 70x50 ] </Dropdown.Item>
                         
                     </DropdownButton>
                 </ButtonToolbar>

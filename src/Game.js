@@ -30,14 +30,20 @@ class Game extends React.Component {
         let gridCopy = arrayClone(this.state.gridFull);
         for (let i = 0; i < this.rows; i++){
             for (let j = 0; j < this.cols; j++){
-                if ( Math.floor(Math.random() * 3) === 1){
-                    gridCopy[i][j] = true;
+                if (!gridCopy[i][j]){
+                    if ( Math.floor(Math.random() * 3) === 1){
+                        gridCopy[i][j] = true;
+                    }
+                }
+                else {
+                    gridCopy[i][j] = false;
                 }
             }
         }
         this.setState({
             gridFull: gridCopy
         });
+        this.state.generation = 0;
     }
 
     playButton = () => {
@@ -47,6 +53,24 @@ class Game extends React.Component {
 
     pauseButton = () => {
         clearInterval(this.intervalId);
+    }
+
+    slow = () => {
+        this.speed = 400;
+        this.playButton();
+    }
+
+    fast = () => {
+        this.speed = 100;
+        this.playButton();
+    }
+
+    clear = () => {
+        let grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+        this.setState({
+            gridFull: grid,
+            generation: 0
+        })
     }
 
     play = () => {

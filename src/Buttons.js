@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import { ButtonToolbar, MenuItem, DropdownButton, Dropdown } from 'react-bootstrap';
+// import Button from '@material-ui/core/Button';
+import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
 
 class Buttons extends React.Component{
 
